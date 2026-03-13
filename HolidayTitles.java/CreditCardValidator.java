@@ -31,7 +31,7 @@ if (length ==13 ){
     while (position <=13){
         int digit =method / counter;
 
-    if (evenOrOdd ==0){
+    if (evenOrOdd / 2 ==0){
         int doubleEven =digit * 2;      
         if (doubleEven >9){
             int singleEvenDigit = doubleEven % 10 + (doubleEven % 10) / 10;                        
@@ -43,7 +43,7 @@ if (length ==13 ){
 
     
 
-    else if (evenOrOdd ==1){
+    else if (evenOrOdd / 2 ==1){
         int doubleOdd =digit * 2 ;
         if (doubleOdd >9){
             int singleOddDigit = doubleOdd % 10 + (doubleOdd % 10) / 10;
@@ -64,7 +64,7 @@ else if(length == 14){
     while (position <=14){
         int digit =method / counter;
         
-        if (evenOrOdd ==0){
+        if (evenOrOdd / 2 ==0){
             int doubleEven =digit * 2;      
             if (doubleEven >9){
                 int singleEvenDigit = doubleEven % 10 + (doubleEven % 10) / 10;                       
@@ -74,7 +74,7 @@ else if(length == 14){
 
         }
 
-        else if (evenOrOdd ==1){
+        else if (evenOrOdd / 2 ==1){
             int  doubleOdd =digit * 2;
             if (doubleOdd >9){
                 int singleOddDigit = doubleOdd % 10 + (doubleOdd % 10) / 10;
@@ -93,7 +93,7 @@ else if(length == 15){
     while (position <=15){
         int digit =method / counter;
         
-    if (evenOrOdd ==0){
+    if (evenOrOdd / 2 ==0){
         int doubleEven =digit * 2 ;      
         if (doubleEven >9){
             int singleEvenDigit = doubleEven % 10 + (doubleEven % 10) / 10;                         
@@ -103,7 +103,7 @@ else if(length == 15){
 
     }
     
-    else if (evenOrOdd ==1){
+    else if (evenOrOdd / 2 ==1){
         int doubleOdd =digit * 2 ;
         if (doubleOdd >9){
             int singleOddDigit = doubleOdd % 10 + (doubleOdd % 10) / 10;
@@ -124,7 +124,7 @@ else if(length == 16){
     while (position <=16){
         int digit =method / counter;
 
-    if (evenOrOdd ==0){
+    if (evenOrOdd / 2 ==0){
         int doubleEven =digit * 2;      
         if (doubleEven >9){
             int singleEvenDigit = doubleEven % 10 + (doubleEven % 10) / 10;                        
@@ -136,7 +136,7 @@ else if(length == 16){
 
     
 
-    else if (evenOrOdd ==1){
+    else if (evenOrOdd / 2 ==1){
         int  doubleOdd =digit * 2;
         if (doubleOdd >9){
             int singleOddDigit = doubleOdd % 10 + (doubleOdd % 10) / 10;
@@ -166,10 +166,6 @@ else if (total % 10 !=0){
     System.out.print("Invalid");}
 
 
-
-
-
-String[] validitys = new String [10];
 
 
 

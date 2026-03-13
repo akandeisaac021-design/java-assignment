@@ -16,15 +16,26 @@ int duration =scanner.nextInt();
  
 System.out.print("Enter your rate: ");
 int rate =scanner.nextInt();
+double monthlyRate =(rate /100 ) / 12;
 
-double numerator =Math.pow(rate*( 1 + rate), duration);
-double denominator =Math.pow((annualInterest + rate ), duration) -1;
+double numerator =Math.pow(monthlyRate*( 1 + monthlyRate), duration);
+double denominator =Math.pow((annualInterest + monthlyRate ), duration) -1;
 
 double monthlyPaymentValue =principle * numerator / denominator;
 
 
-System.out.println("Monthly payment value");
+System.out.println("Monthly payment value: ");
 System.out.println(monthlyPaymentValue);
 
     }
 }
+
+
+
+
+
+
+
+
+
+

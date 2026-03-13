@@ -88,9 +88,9 @@ Scanner scanner =new Scanner(System.in);
             System.out.println("The sixth day of christmas");
             String sixthDayofChristmas ="""
                 On the sixth day of Christmas
+                My True love gave to me
                 Six geese a laying
                 Five golden rings
-                My True love gave to me
                 Four calling birds
                 Three french hens
                 Two turtle doves
@@ -104,10 +104,10 @@ Scanner scanner =new Scanner(System.in);
             System.out.println("The seventh day of christmas");
             String seventhDayofChristmas ="""
                 On the seventh day of Christmas
+                My True love gave to me
                 Seven swans a Swimming
                 Six geese a laying
                 Five golden rings
-                My True love gave to me
                 Four calling birds
                 Three french hens
                 Two turtle doves
@@ -121,11 +121,11 @@ Scanner scanner =new Scanner(System.in);
             System.out.println("The eighth day of christmas");
             String eighthDayofChristmas ="""
                 On the eighth day of Christmas
+                My True love gave to me
                 Eight maids are milking
                 Seven swans a Swimming
                 Six geese a laying
                 Five golden rings
-                My True love gave to me
                 Four calling birds
                 Three french hens
                 Two turtle doves
@@ -139,12 +139,12 @@ Scanner scanner =new Scanner(System.in);
             System.out.println("The ninth day of christmas");
             String ninthDayofChristmas ="""
                 On the ninth day of Christmas
+                My True love gave to me
                 Nine ladies dancing
                 Eight maids are milking
                 Seven swans a Swimming
                 Six geese a laying
                 Five golden rings
-                My True love gave to me
                 Four calling birds
                 Three french hens
                 Two turtle doves
@@ -158,13 +158,13 @@ Scanner scanner =new Scanner(System.in);
             System.out.println("The tenth day of christmas");
             String tenthDayofChristmas ="""
                 On the tenth day of Christmas
+                My True love gave to me
                 Ten lords a leaping
                 Nine ladies dancing
                 Eight maids are milking
                 Seven swans a Swimming
                 Six geese a laying
                 Five golden rings
-                My True love gave to me
                 Four calling birds
                 Three french hens
                 Two turtle doves
@@ -178,13 +178,14 @@ Scanner scanner =new Scanner(System.in);
             System.out.println("The eleventh day of christmas");
             String eleventhDayofChristmas ="""
                 On the eleventh day of Christmas
+                My True love gave to me
+                Eleven pipers piping
                 Ten lords a leaping
                 Nine ladies dancing
                 Eight maids are milking
                 Seven swans a Swimming
                 Six geese a laying
                 Five golden rings
-                My True love gave to me
                 Four calling birds
                 Three french hens
                 Two turtle doves
@@ -198,13 +199,13 @@ Scanner scanner =new Scanner(System.in);
             System.out.println("The twelveth day of christmas");
             String twelvethDayofChristmas ="""
                 On the twelveth day of Christmas
+                My True love gave to me
                 Ten lords a leaping
                 Nine ladies dancing
                 Eight maids are milking
                 Seven swans a Swimming
                 Six geese a laying
                 Five golden rings
-                My True love gave to me
                 Four calling birds
                 Three french hens
                 Two turtle doves
