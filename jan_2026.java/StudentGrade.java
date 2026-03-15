@@ -1,119 +1,75 @@
 import java.util.Scanner;
 import java.util.ArrayList;
 
-public class StudentGrade{
-    public static void main(String[] args){
+public class StudentGrade {
+    public static void main(String[] args) {
+        ArrayList<String> studentNames = new ArrayList<>();
+        ArrayList<Integer> studentTotals = new ArrayList<>();
+        ArrayList<Integer> subjectsPerStudent = new ArrayList<>();
+        ArrayList<Double> studentAverages = new ArrayList<>();
+        ArrayList<String> subjectNames = new ArrayList<>();
 
-ArrayList<Integer> studentsScores =new ArrayList<>();
-ArrayList<String> studentsNames =new ArrayList<>();
-ArrayList<Integer> storeStudentTotal =new ArrayList<>();
-ArrayList<Integer> storeNumberOfSubjectsOffered =new ArrayList<>();
-ArrayList<Double> storeAverage =new ArrayList<>();
-ArrayList<String> subjectNames =new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
 
-Scanner scanner =new Scanner(System.in);
+        System.out.println("=== Student Grade System ===");
 
-int studentsScore;
+        System.out.print("Enter number of students: ");
+        int totalStudents = scanner.nextInt();
 
-System.out.println("Student Grade System: ");
+        System.out.print("Enter number of subjects: ");
+        int totalSubjects = scanner.nextInt();
+        scanner.nextLine();
 
-System.out.println("Enter number of Students: ");
-int numberOfStudents =scanner.nextInt();
+        for (int subjectIndex =0; subjectIndex < totalSubjects; subjectIndex++) {
+            System.out.print("Enter subject name: ");
+            subjectNames.add(scanner.nextLine());
+        }
 
-System.out.println("Enter number of subjects: ");
-int numberOfSubjects =scanner.nextInt();
-scanner.nextLine();
+        for (int studentIndex = 1; studentIndex <= totalStudents; studentIndex++) {
+            System.out.print("Enter student name: ");
+            String studentName = scanner.nextLine();
+            studentNames.add(studentName);
 
-int subjectCounter=0;
+            System.out.print("Enter number of subjects offered: ");
+            int subjectsOffered = scanner.nextInt();
+            subjectsPerStudent.add(subjectsOffered);
 
-while (subjectCounter <numberOfSubjects){
-    System.out.println("Enter the subject names: ");
-    String subjectName =scanner.nextLine();
-    subjectCounter++;
-    subjectNames.add(subjectName);
-    
-}
+            int totalScore = 0;
 
+            for (int subjectIndex = 1; subjectIndex <= subjectsOffered; subjectIndex++) {
+                System.out.print("Enter score for subject " + subjectIndex + ": ");
+                int subjectScore = scanner.nextInt();
 
+                while (subjectScore < 0) {
+                    System.out.println("Invalid score. Please re-enter: ");
+                    subjectScore = scanner.nextInt();
+                }
 
-for(int studentCounter =1; studentCounter <=numberOfStudents; studentCounter++){
-    System.out.print("Enter Student's name: ");
-    String studentsName =scanner.nextLine();
-    scanner.nextLine();
-    studentsNames.add(studentsName);
-    
+                totalScore += subjectScore;
+            }
 
-    System.out.print("Enter amount of subjects offered: ");
-    int amountOfSubjectsOffered =scanner.nextInt(); 
-    storeNumberOfSubjectsOffered.add(amountOfSubjectsOffered);
-    
-    
-    for(int subjectScoreCounter =1;  subjectScoreCounter <=amountOfSubjectsOffered; subjectCounter++){
-        System.out.print("Enter Score for subject" + subjectScoreCounter + ": ");
-        studentsScore =scanner.nextInt();
-        subjectScoreCounter++;
+            double averageScore = (double) totalScore / subjectsOffered;
+            studentTotals.add(totalScore);
+            studentAverages.add(averageScore);
 
+            scanner.nextLine();
+        }
 
-        while(studentsScore <0 ){
-            System.out.println("Invalid Score");
-            System.out.println("Please re-enter Students Score: ");
-            studentsScore =scanner.nextInt();
-        }    
-        studentsScores.add(studentsScore);
-        
-        int studentTotal =0;
-        studentTotal +=studentsScore;
-        storeStudentTotal.add(studentTotal);
-        double averageScore =(double)(studentTotal / amountOfSubjectsOffered);
-        
-        storeAverage.add(averageScore);
+        System.out.println("===================================================================");
+        System.out.print("Student Name\t");
 
-    }
+        for (String subject : subjectNames) {
+            System.out.print(subject + "\t");
+        }
 
+        System.out.println("Total\tAverage");
 
-
-
-}
-
-
-
-
-System.out.println("=======================================================================================================================");
-String tableFormatLineOne ="Student Name---------------------";
-while (subjectCounter <numberOfSubjects){
-    tableFormatLineOne =subjectNames.get(subjectCounter) + "--------------------";
-    subjectCounter++;
-}
-
-
-
-System.out.println(tableFormatLineOne);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        for (int studentIndex =0; studentIndex <totalStudents; studentIndex++) {
+            System.out.print(studentNames.get(studentIndex) + "\t");
+ 
+            System.out.print(studentTotals.get(studentIndex) + "\t");
+            System.out.println(studentAverages.get(studentIndex));
+        }
 
     }
 }
