@@ -5,73 +5,59 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class ACSystemTest{
 
     @Test
-    public void CheckIfACIsOn(){
-
-        int expectedValue =1;
-
-        int actualValue =1;
-
-        assertEquals(expectedValue ,actualValue);
-    }
-
-    @Test
-    public void CheckIfACIsOff(){
-
-        int expectedValue =0;
-
-        int actualValue =0;
-
-        assertEquals(expectedValue, actualValue);
-    }
+    public void CheckIfACIsOff(){assertEquals(0, ACSystem.putOffTheAC(1));}
 
 
     @Test
-    public void checkIfTemperatureReduces(){
-
-
-        int expectedValue =30;
-        int actualValue =30;
-
-        assertEquals(expectedValue, actualValue);
-
-    }
+    public void CheckIfACIsOn(){assertEquals(1 ,ACSystem.putOnTheAC(0));}
 
 
     @Test
-    public void checkIfTemperatureDecreasesToTheLowest(){
+    public void checkIfTemperatureReduces(){assertEquals(30, ACSystem.decreaseTheaCTemperature(1, 31));}
 
 
-            int expectedValue =16;
-            int actualValue =16;
+    @Test
+    public void checkThatTemperatureWillNotDecrease_WhenACIsOff(){assertEquals(-1,ACSystem.decreaseTheaCTemperature(0, 31));}
 
-            assertEquals(expectedValue, actualValue);
+    
+    @Test
+    public void checkThatTemperatureWillNotDecrease_WhenACIsAlreadyAtMininumTemperature(){assertEquals(-1, ACSystem.decreaseTheaCTemperature(1, 16));}
 
-        }
+
+    @Test
+    public void checkThatTemperatureWillNotDecreaseTOMinimum_WhenACIsOff(){assertEquals(-1, ACSystem.DecreaseACToMinimumTemperature(0, 25));}
+
+  
+    @Test
+    public void checkIfTemperatureDecreasesToTheLowest(){assertEquals(16, ACSystem.DecreaseACToMinimumTemperature(1, 25));}    
+
+    
+    @Test
+    public void checkThatTemperatureWillNotDecreaseTOMinimum_WhenACIsAlreadyAtMininumTemperature(){assertEquals(-1, ACSystem.DecreaseACToMinimumTemperature(1, 16));}
+
      
     @Test
-    public void checkIfTemperatureIncreases(){
+    public void checkIfTemperatureIncreases(){assertEquals(27, ACSystem.IncreaseTheaCTemperature(1, 26));}
 
-
-        int expectedValue =30;
-        int actualValue =30;
-
-        assertEquals(expectedValue, actualValue);
-
-    }
 
     @Test
-    public void checkIfTemperatureIncreasesToTheHighest(){
+    public void checkIfTemperatureIncreases_WhenACIsOff(){assertEquals(-1, ACSystem.IncreaseTheaCTemperature(0, 31));}
+
+    
+    @Test
+    public void checkIfTemperatureIncreases_WhenACIsAlreadyAtMaximumTemperature(){assertEquals(-1, ACSystem.IncreaseTheaCTemperature(1, 31));}
 
 
-        int expectedValue =30;
-        int actualValue =30;
-
-        assertEquals(expectedValue, actualValue);
-
-    }
+    @Test
+    public void checkIfTemperatureIncreasesToTheHighest(){assertEquals(31, ACSystem.IncreaseACToMaximumTemperature(1, 25));}
 
 
+    @Test
+    public void checkIfTemperatureIncreasesToMaximum_WhenACIsOff(){assertEquals(-1, ACSystem.IncreaseACToMaximumTemperature(0, 25));}
 
 
- 
+    @Test
+    public void checkIfTemperatureIncreasesToMaximum_WhenACIsAlreadyAtMaximumTemperature(){assertEquals(-1, ACSystem.IncreaseACToMaximumTemperature(1, 31));}
+
+
 }

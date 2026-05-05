@@ -11,15 +11,13 @@ import java.util.ArrayList;
 
 String deposited ="#" + String.valueOf(amount);
 System.out.print("Amount Deposited: ");
-System.out.println(deposited);
+
 
 newBalance =String.valueOf(accountBalance);
-System.out.println("New Balance: ");
-System.out.println(newBalance);
+
 
 
 transaction ="+" + String.valueOf(amount);
-System.out.println("Processing>>>>>>>>>>>>>");
  
     return transaction;
     }
@@ -41,13 +39,9 @@ if (amount <= accountBalance){
     System.out.println(newBalance);
 
     transaction ="-" + (amount);
-
-    System.out.println("Processing>>>>>>>>>>>>>");
-    System.out.println("TRANSACTION SUCCESSFUL!!");
-
 }
 
-else if(amount > accountBalance){
+else{
     System.out.println("Withdrawal failed :due to insufficient funds");
     transaction ="FAILED!!";
 }
@@ -57,26 +51,19 @@ else if(amount > accountBalance){
     }
 
     static String Transfer( double amount, double accountBalance, String recipientsBankName, String recipientsAccountNumber){
+
 if (amount <= accountBalance){
     accountBalance -=amount;
 
     String transfered ="#" + (amount);
-    System.out.print("Amount Transfered: ");
-    System.out.println(transfered);
+    System.out.print("Amount Transfered:" + transfered);
 
     newBalance =String.valueOf(accountBalance);
     String transaction ="-" + (amount);
-    System.out.println("Processing>>>>>>>>>>>>>");
-    System.out.println("TRANSACTION SUCCESSFUL!!");
-
-    transaction ="Outgoing: -" + String.valueOf(amount);
-System.out.println("Recipients Bank name: " + recipientsBankName);
-System.out.println("Recepients Account Number: " + recipientsAccountNumber);
-System.out.println("Payment method: Savings Wallet");
 
 }
 
-else if (amount > accountBalance){
+else{
     System.out.println("Withdrawal failed :due to insufficient funds");
     transaction ="FAILED";
 }   

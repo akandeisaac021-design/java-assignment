@@ -38,9 +38,12 @@ while (transactionLogChoice !=5){
             }
             accountBalance += amount;
             String transaction =MethodsTransacLog.deposit(amount, accountBalance);
+
             MethodsTransacLog.deposit(amount, accountBalance);
             MethodsTransacLog.storeTransaction(transactions, transaction);
-            System.out.println("TRANSACTION SUCCESSFUL!!");
+
+            System.out.println(deposited + "was deposited successfully");
+            System.out.println("New Balance ==> " + newBalance);
         }
 
         case 2 ->{System.out.println("Withdrawal");
@@ -52,7 +55,9 @@ while (transactionLogChoice !=5){
             }
             String transaction =MethodsTransacLog.withdrawal(amount, accountBalance);
             MethodsTransacLog.withdrawal(amount, accountBalance);
+
             if (!transaction.equals("Failed")){
+
                 accountBalance -=amount;}
             MethodsTransacLog.storeTransaction(transactions, transaction);
 
@@ -85,8 +90,6 @@ while (transactionLogChoice !=5){
 
         }
 
-
-
         case 4 ->{System.out.println("Transaction History");
             MethodsTransacLog.showTransaction(transactions);
 
@@ -103,6 +106,7 @@ while (transactionLogChoice !=5){
     System.out.println(newTransactionOption);
     System.out.println("Do you wish to make another transaction ?");
     int newTransactionOptionChoice =scanner.nextInt();
+
     while(newTransactionOptionChoice <1 ||newTransactionOptionChoice >2){
         System.out.println("Invalid Choice: ");
         System.out.println(newTransactionOption);
@@ -111,12 +115,14 @@ while (transactionLogChoice !=5){
 
     if  (newTransactionOptionChoice ==2){
         break;}
-    else if(newTransactionOptionChoice ==1){
+
+    else{
         System.out.println(transactionOption);
         System.out.println("Enter a choice: ");
         transactionLogChoice =scanner.nextInt();}
     
 }
+
 System.out.println("Thank you for using I.B.I(International Bank of Isaac");
     }
 }

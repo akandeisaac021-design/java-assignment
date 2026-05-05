@@ -21,8 +21,8 @@ public class BikeSystemTest{
     @Test
     public void tesThatSpeedIncreasedByOne_WhenBikeisOn(){
         int bikeStatus =1;
-        int currentSpeed =32;
-        assertEquals(BikeSystem.accelerate(bikeStatus, currentSpeed), 33);
+        int currentSpeed =0;
+        assertEquals(BikeSystem.accelerate(bikeStatus, currentSpeed), 1);
     } 
 
     @Test
