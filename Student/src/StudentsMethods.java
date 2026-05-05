@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class StudentsMethods {
 
     public int calculateAge(int yearOfBirth){
@@ -8,14 +10,22 @@ public class StudentsMethods {
         return total * 5 /100;
     }
 
-    public void registerForCourse(String [] desiredCourses, String [] offeredCourses){
+    public void registerForCourse( String [] offeredCourses, int amountOfDesiredCourses){
 
-        for (int desiredCoursesCount =0; desiredCoursesCount <desiredCourses.length; desiredCoursesCount++){
+        String [] desiredCourses = new String [amountOfDesiredCourses];
+
+        for (int desiredCoursesCount =0; desiredCoursesCount <amountOfDesiredCourses; desiredCoursesCount++){
+
+            System.out.print("Enter course name ==> ");
+
+            Scanner scanner =new Scanner(System.in);
+            String courseName =scanner.nextLine();
 
             for (int offeredCoursesCount=0; offeredCoursesCount < offeredCourses.length; offeredCoursesCount++) {
 
-                if (desiredCourses[desiredCoursesCount] == offeredCourses[offeredCoursesCount]) {
+                if (courseName.equals(offeredCourses[offeredCoursesCount])) {
                     //Call it from dictionary/hashmap and update is attendance by one
+                    desiredCourses[desiredCoursesCount] =courseName;
                     break;
 
                 }

@@ -22,36 +22,30 @@ public class BikeSystem{
     public static int accelerate(int bikeStatus, int currentSpeed){
 
         if (bikeStatus ==1){
-            return currentSpeed + 1;
+            return currentSpeed + identifyCurrentGearSpeed(bikeStatus, currentSpeed);
         }
         return -1;
     }
     
-
 
     public static int deccelerate(int bikeStatus, int currentSpeed){
 
         if (bikeStatus ==1){
-            if (currentSpeed ==0){return -1}
-            return currentSpeed - 1;
+
+            if (currentSpeed >0) return currentSpeed - identifyCurrentGearSpeed(bikeStatus, currentSpeed);
         }
         return -1;
     }
     
 
-    public static int identifyCurrentGearSpeed(int bikeStatus, int currentSpeed){
+    public static int identifyCurrentGearSpeed(int bikeStatus, int currentSpeed) {
 
-        if (bikeStatus ==1){
-            if (currentSpeed >0 && currentSpeed <21){return 1;}
-            else if (currentSpeed >20 && currentSpeed <31){return 2;}
-            else if (currentSpeed >30 && currentSpeed <41){return 3;}
-            else{return 4;}
+        if (bikeStatus == 1) {
+            if (currentSpeed >0 && currentSpeed <= 20) return 1;
+            if (currentSpeed >= 21 && currentSpeed <= 30) return 2;
+            if (currentSpeed >= 31 && currentSpeed <= 40) return 3;
+            if (currentSpeed >= 41) return 4;
         }
         return -1;
     }
-
-
-
-
-
 }

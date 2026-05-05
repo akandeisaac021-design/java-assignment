@@ -1,64 +1,53 @@
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class BikeSystemTest{
-
-
-    @Test
-    public void CheckIfBikeIsOn(){
-        int bikeStatus =0;
-        assertEquals(BikeSystem.turnOnBike(bikeStatus), 1);
-    }
-
+public class BikeSystemTest {
 
     @Test
-    public void CheckIfBikeIsOff(){
-        int bikeStatus =1;
-        assertEquals(BikeSystem.turnOffBike(bikeStatus), 0);
+    public void CheckIfBikeIsOn() {
+        assertEquals(1, BikeSystem.turnOnBike(0));
     }
 
     @Test
-    public void tesThatSpeedIncreasedByOne_WhenBikeisOn(){
-        int bikeStatus =1;
-        int currentSpeed =0;
-        assertEquals(BikeSystem.accelerate(bikeStatus, currentSpeed), 1);
-    } 
-
-    @Test
-    public void testThatAccelerateMethodReturnsAnError_WhenBikeisOff(){
-        int bikeStatus =0;
-        int currentSpeed =32;
-        assertEquals(BikeSystem.accelerate(bikeStatus, currentSpeed), -1);
-    } 
-
-    @Test
-    public void tesThatSpeedDecreaseByOne_WhenBikeisOn(){
-        int bikeStatus =1;
-        int currentSpeed =32;
-        assertEquals(BikeSystem.deccelerate(bikeStatus, currentSpeed), 31);
-    } 
-
-    @Test
-    public void testThatDecreaseMethodReturnsAnError_WhenBikeisOff(){
-        int bikeStatus =0;
-        int currentSpeed =32;
-        assertEquals(BikeSystem.deccelerate(bikeStatus, currentSpeed), -1);
+    public void CheckIfBikeIsOff() {
+        assertEquals(0, BikeSystem.turnOffBike(1));
     }
 
     @Test
-    public void testThatGearSpeedIsCategorizedProperly(){
-        int bikeStatus =1;
-        int currentSpeed =78;
-        assertEquals(BikeSystem.identifyCurrentGearSpeed(bikeStatus, currentSpeed), 4);
-        currentSpeed =32;
-        assertEquals(BikeSystem.identifyCurrentGearSpeed(bikeStatus, currentSpeed), 3);
-        currentSpeed =27;
-        assertEquals(BikeSystem.identifyCurrentGearSpeed(bikeStatus, currentSpeed), 2);
-        currentSpeed =3;
-        assertEquals(BikeSystem.identifyCurrentGearSpeed(bikeStatus, currentSpeed), 1);
-        bikeStatus =0;
-        assertEquals(BikeSystem.identifyCurrentGearSpeed(bikeStatus, currentSpeed), -1);  
-       
+    public void testThatSpeedIncreasedByGearValue_WhenBikeIsOn() {
+
+        assertEquals(1, BikeSystem.accelerate(1, 0));
+        assertEquals(22, BikeSystem.accelerate(1, 20));
+        assertEquals(33, BikeSystem.accelerate(1, 30));
+        assertEquals(44, BikeSystem.accelerate(1, 40));
+    } 
+
+    @Test
+    public void testThatAccelerateMethodReturnsAnError_WhenBikeIsOff() {
+        // Must pass 0 for status to test "Off" logic
+        assertEquals(-1, BikeSystem.accelerate(0, 32));
+    } 
+
+    @Test
+    public void testThatSpeedDecreasesByGearValue_WhenBikeIsOn() {
+
+        assertEquals(19, BikeSystem.deccelerate(1, 20));
+        assertEquals(28, BikeSystem.deccelerate(1, 30));
+        assertEquals(37, BikeSystem.deccelerate(1, 40));
+        assertEquals(46, BikeSystem.deccelerate(1, 50));
+    } 
+
+    @Test
+    public void testThatDecreaseMethodReturnsAnError_WhenBikeIsOff() {
+        assertEquals(-1, BikeSystem.deccelerate(0, 32));
+    }
+
+    @Test
+    public void testThatGearSpeedIsCategorizedProperly() {
+        assertEquals(4, BikeSystem.identifyCurrentGearSpeed(1, 78));
+        assertEquals(3, BikeSystem.identifyCurrentGearSpeed(1, 32));
+        assertEquals(2, BikeSystem.identifyCurrentGearSpeed(1, 27));
+        assertEquals(1, BikeSystem.identifyCurrentGearSpeed(1, 3));
     }
 }
+

@@ -25,11 +25,13 @@ public class Student{
 
         int total =67;
 
-        StudentsMethods studentinfo =new StudentsMethods();
+        StudentsMethods studentInfo =new StudentsMethods();
 
-        System.out.println("You are " + studentinfo.calculateAge(yearOfBirth) + "Years old");
+        System.out.println("You are " + studentInfo.calculateAge(yearOfBirth) + "Years old");
 
-        System.out.println("You have a g.p.a of " + studentinfo.calculateGPA(total));
+        System.out.println("You have a g.p.a of " + studentInfo.calculateGPA(total));
+
+        studentInfo.registerForCourse();
 
 
 
