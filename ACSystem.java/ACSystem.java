@@ -1,73 +1,80 @@
 public class ACSystem{
 
-    public static int putOnTheAC(int aCStatus){
+    private int aCTemperature =0;
+    private boolean isACOn =false;
 
-        if (aCStatus ==0){
-            return aCStatus +=1;
+    public void putOnTheAC(){
+
+        if (!isACOn){
+            isACOn =true;
+            aCTemperature =16;
 
         }
-            return -1;
     }
 
 
-    public static int putOffTheAC(int aCStatus){
+    public void putOffTheAC(){
         
-        if (aCStatus ==1){
-            return aCStatus-=1;
+        if (isACOn){
+
+            isACOn =false;
+            aCTemperature =0;
 
         }
-        return -1;
     }
 
-    public static int decreaseTheaCTemperature(int aCStatus, int aCTemperature){
+    public void decreaseTheaCTemperature(){
 
-        if (aCStatus ==1){
+        if (isACOn){
             if (aCTemperature >16){
 
-                return aCTemperature -1;
+                aCTemperature -=1;
             }
         }
-        return -1;
     }
 
 
-    public static int IncreaseTheaCTemperature(int aCStatus, int aCTemperature){
+    public void IncreaseTheaCTemperature(){
     
-        if (aCStatus ==1){
+        if (isACOn){
             if (aCTemperature <31){
 
-                return aCTemperature + 1;
+                aCTemperature +=1;
             }
         }
-        return -1;
     }
 
-    public static int DecreaseACToMinimumTemperature(int aCStatus, int aCTemperature){
+    public void DecreaseACToMinimumTemperature(){
 
-        if (aCStatus ==1){
+        if(isACOn){
 
             if (aCTemperature >16){
 
-                return aCTemperature - (aCTemperature - 16);
+                aCTemperature -=(aCTemperature - 16);
             
 
             }
         }
-        return -1;
-
     }
 
-    public static int IncreaseACToMaximumTemperature(int aCStatus, int aCTemperature){
+    public void IncreaseACToMaximumTemperature(){
 
-        if (aCStatus ==1){
+        if (isACOn){
 
             if (aCTemperature <31){
 
-                return aCTemperature + (31 - aCTemperature);               
+                aCTemperature +=(31 - aCTemperature);               
             }
         }
 
-    return -1;
+    }
+
+    public int getTemperature() {
+        return aCTemperature;
+    }
+
+    public boolean isOn() {
+        return isACOn;
     }
 
 }

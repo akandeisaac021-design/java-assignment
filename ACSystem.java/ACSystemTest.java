@@ -1,63 +1,80 @@
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+public class ACSystemTest {
 
-public class ACSystemTest{
+    private ACSystem myAc;
 
-    @Test
-    public void CheckIfACIsOff(){assertEquals(0, ACSystem.putOffTheAC(1));}
-
-
-    @Test
-    public void CheckIfACIsOn(){assertEquals(1 ,ACSystem.putOnTheAC(0));}
-
+    @BeforeEach
+    public void setUp(){
+        myAc = new ACSystem();
+    }
 
     @Test
-    public void checkIfTemperatureReduces(){assertEquals(30, ACSystem.decreaseTheaCTemperature(1, 31));}
+    public void test_ACStartsAsOff(){
+
+        assertFalse(myAc.isOn());
+    }
+
+    @Test
+    public void test_TurnOnAC(){
+        myAc.putOnTheAC();
+        assertTrue(myAc.isOn());
+    }
+
+    @Test
+    public void testThatDecreaseTemperature_UpdatesState(){
+
+        myAc.putOnTheAC();
+        myAc.IncreaseTheaCTemperature(); 
+        myAc.decreaseTheaCTemperature();
+        assertEquals(16, myAc.getTemperature());
+    }
+
+    @Test
+    public void testThatTemperatureDoesNotChange_WhenACOff(){
+
+        myAc.decreaseTheaCTemperature();
+        assertEquals(0, myAc.getTemperature());
+    }
 
 
     @Test
-    public void checkThatTemperatureWillNotDecrease_WhenACIsOff(){assertEquals(-1,ACSystem.decreaseTheaCTemperature(0, 31));}
+    public void testThatIncreaseToMax(){
 
+        myAc.putOnTheAC();
+        myAc.IncreaseACToMaximumTemperature();
+        assertEquals(31, myAc.getTemperature());
+    }
+
+    @Test
+    public void testThatTemperatureCannotGoBelow16(){
+        myAc.putOnTheAC();
+        myAc.decreaseTheaCTemperature();
+        assertEquals(16, myAc.getTemperature());
+    }
+
+    @Test
+    public void testThatTemperatureCannotGoAbove31(){
+        myAc.putOnTheAC();
+        myAc.IncreaseACToMaximumTemperature();
+        myAc.IncreaseTheaCTemperature();
+        assertEquals(31, myAc.getTemperature()); 
+    }
     
     @Test
-    public void checkThatTemperatureWillNotDecrease_WhenACIsAlreadyAtMininumTemperature(){assertEquals(-1, ACSystem.decreaseTheaCTemperature(1, 16));}
-
-
-    @Test
-    public void checkThatTemperatureWillNotDecreaseTOMinimum_WhenACIsOff(){assertEquals(-1, ACSystem.DecreaseACToMinimumTemperature(0, 25));}
-
-  
-    @Test
-    public void checkIfTemperatureDecreasesToTheLowest(){assertEquals(16, ACSystem.DecreaseACToMinimumTemperature(1, 25));}    
-
-    
-    @Test
-    public void checkThatTemperatureWillNotDecreaseTOMinimum_WhenACIsAlreadyAtMininumTemperature(){assertEquals(-1, ACSystem.DecreaseACToMinimumTemperature(1, 16));}
-
-     
-    @Test
-    public void checkIfTemperatureIncreases(){assertEquals(27, ACSystem.IncreaseTheaCTemperature(1, 26));}
-
+    public void test_TurningACOff_ResetsDisplayToZero(){
+        myAc.putOnTheAC();
+        myAc.putOffTheAC();
+        assertEquals(0, myAc.getTemperature());
+    }
 
     @Test
-    public void checkIfTemperatureIncreases_WhenACIsOff(){assertEquals(-1, ACSystem.IncreaseTheaCTemperature(0, 31));}
-
-    
-    @Test
-    public void checkIfTemperatureIncreases_WhenACIsAlreadyAtMaximumTemperature(){assertEquals(-1, ACSystem.IncreaseTheaCTemperature(1, 31));}
-
-
-    @Test
-    public void checkIfTemperatureIncreasesToTheHighest(){assertEquals(31, ACSystem.IncreaseACToMaximumTemperature(1, 25));}
-
-
-    @Test
-    public void checkIfTemperatureIncreasesToMaximum_WhenACIsOff(){assertEquals(-1, ACSystem.IncreaseACToMaximumTemperature(0, 25));}
-
-
-    @Test
-    public void checkIfTemperatureIncreasesToMaximum_WhenACIsAlreadyAtMaximumTemperature(){assertEquals(-1, ACSystem.IncreaseACToMaximumTemperature(1, 31));}
-
+    public void test_TurningACOn_SetsToDefaultSixteen(){
+        myAc.putOnTheAC();
+        assertEquals(16, myAc.getTemperature());
+    }
 
 }
+

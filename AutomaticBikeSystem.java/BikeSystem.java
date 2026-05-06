@@ -1,5 +1,7 @@
 public class BikeSystem{
 
+    static int currentSpeed =0;
+s
     public static int turnOnBike(int bikeStatus){
 
         if (bikeStatus ==0){

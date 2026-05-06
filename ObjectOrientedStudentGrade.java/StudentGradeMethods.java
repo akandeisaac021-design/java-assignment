@@ -8,17 +8,17 @@ public class StudentGradeMethods{
     double averageScore;
     int position;
 
-    Student(String studentName, int[] subjectScores){
+    StudentGradeMethods(String studentName, int[] subjectScores){
         this.studentName = studentName;
         this.subjectScores = subjectScores;
         calculateTotalAndAverage();
     }
 
 
-    public static void calculateTotalAndAverage() {
+    public void calculateTotalAndAverage(){
         int sumOfScores = 0;
 
-        for (int subjectScore : subjectScores) {
+        for (int subjectScore : subjectScores){
             sumOfScores += subjectScore;
         }
         this.totalScore = sumOfScores;
@@ -27,12 +27,12 @@ public class StudentGradeMethods{
 
 
     public static void calculatePositions(Student[] studentRecords){
-        for (int currentStudentIndex = 0; currentStudentIndex < studentRecords.length; currentStudentIndex++) {
+        for (int currentStudentIndex = 0; currentStudentIndex < studentRecords.length; currentStudentIndex++){
             int rank =1;
 
-            for (int comparisonStudentIndex = 0; comparisonStudentIndex < studentRecords.length; comparisonStudentIndex++) {
+            for (int comparisonStudentIndex = 0; comparisonStudentIndex < studentRecords.length; comparisonStudentIndex++){
 
-                if (studentRecords[comparisonStudentIndex].totalScore > studentRecords[currentStudentIndex].totalScore) {
+                if (studentRecords[comparisonStudentIndex].totalScore > studentRecords[currentStudentIndex].totalScore){
                     rank++;
                 }
             }
