@@ -17,9 +17,9 @@ public class BikeSystemTest {
     public void testThatSpeedIncreasedByGearValue_WhenBikeIsOn() {
 
         assertEquals(1, BikeSystem.accelerate(1, 0));
-        assertEquals(22, BikeSystem.accelerate(1, 20));
-        assertEquals(33, BikeSystem.accelerate(1, 30));
-        assertEquals(44, BikeSystem.accelerate(1, 40));
+        assertEquals(23, BikeSystem.accelerate(1, 21));
+        assertEquals(34, BikeSystem.accelerate(1, 31));
+        assertEquals(45, BikeSystem.accelerate(1, 41));
     } 
 
     @Test

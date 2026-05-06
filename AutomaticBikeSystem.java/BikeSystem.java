@@ -41,7 +41,7 @@ public class BikeSystem{
     public static int identifyCurrentGearSpeed(int bikeStatus, int currentSpeed) {
 
         if (bikeStatus == 1) {
-            if (currentSpeed >0 && currentSpeed <= 20) return 1;
+            if (currentSpeed >=0 && currentSpeed <= 20) return 1;
             if (currentSpeed >= 21 && currentSpeed <= 30) return 2;
             if (currentSpeed >= 31 && currentSpeed <= 40) return 3;
             if (currentSpeed >= 41) return 4;
