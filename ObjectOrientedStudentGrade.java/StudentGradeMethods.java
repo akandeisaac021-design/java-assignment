@@ -7,6 +7,7 @@ public class StudentGradeMethods{
     int totalScore;
     double averageScore;
     int position;
+    double average;
 
     StudentGradeMethods(String studentName, int[] subjectScores){
         this.studentName = studentName;
@@ -15,15 +16,18 @@ public class StudentGradeMethods{
     }
 
 
-    public void calculateTotalAndAverage(){
+    public void calculateTotal(){
         int sumOfScores = 0;
 
         for (int subjectScore : subjectScores){
             sumOfScores += subjectScore;
         }
         this.totalScore = sumOfScores;
-        this.averageScore = (double) sumOfScores / subjectScores.length;
     }
+
+    public void calculateAverage(){
+        this.average =calculateTotal() / subjectScores.length;
+}
 
 
     public static void calculatePositions(Student[] studentRecords){

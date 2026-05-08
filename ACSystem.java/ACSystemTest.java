@@ -64,16 +64,16 @@ public class ACSystemTest {
     }
     
     @Test
-    public void test_TurningACOff_ResetsDisplayToZero(){
+    public void test_TurningACOff_ResetTemperatureToZero(){
         myAc.putOnTheAC();
         myAc.putOffTheAC();
         assertEquals(0, myAc.getTemperature());
     }
 
     @Test
-    public void test_TurningACOn_SetsToDefaultSixteen(){
+    public void test_TurningACOn_SetsToDefault24(){
         myAc.putOnTheAC();
-        assertEquals(16, myAc.getTemperature());
+        assertEquals(24, myAc.getTemperature());
     }
 
 }

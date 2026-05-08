@@ -7,7 +7,7 @@ public class ACSystem{
 
         if (!isACOn){
             isACOn =true;
-            aCTemperature =16;
+            aCTemperature =24;
 
         }
     }

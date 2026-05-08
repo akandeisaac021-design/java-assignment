@@ -2,12 +2,14 @@ import java.util.Scanner;
 
 public class StudentsMethods {
 
-    public int calculateAge(int yearOfBirth){
-        return 2026 - yearOfBirth;
+    short age;
+    
+    public void calculateAge(int yearOfBirth){
+        age = 2026 - yearOfBirth;
     }
 
-    public int calculateGPA(int total){
-        return total * 5 /100;
+    public void calculateGPA(int total){
+        double gpa =total * 5 /100;
     }
 
     public void registerForCourse( String [] offeredCourses, int amountOfDesiredCourses){
