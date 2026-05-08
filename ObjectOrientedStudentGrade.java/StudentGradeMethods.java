@@ -1,67 +1,53 @@
-import java.util.Scanner;
-
-public class StudentGradeMethods{
+public class Student{
 
     String studentName;
     int[] subjectScores;
     int totalScore;
     double averageScore;
     int position;
-    double average;
 
-    StudentGradeMethods(String studentName, int[] subjectScores){
-        this.studentName = studentName;
-        this.subjectScores = subjectScores;
-        calculateTotalAndAverage();
+    Student(String studentName, int[] subjectScores){
+        this.studentName =studentName;
+        this.subjectScores =subjectScores;
+        calculateTotalAndAverage(); // Initialize calculations immediately
     }
 
-
-    public void calculateTotal(){
-        int sumOfScores = 0;
-
-        for (int subjectScore : subjectScores){
-            sumOfScores += subjectScore;
+    private void calculateTotalAndAverage(){
+        int sumOfScores =0;
+        for (int score :subjectScores){
+            sumOfScores +=score;
         }
-        this.totalScore = sumOfScores;
+        this.totalScore =sumOfScores;
+        this.averageScore =(double) sumOfScores / subjectScores.length;
     }
-
-    public void calculateAverage(){
-        this.average =calculateTotal() / subjectScores.length;
-}
-
 
     public static void calculatePositions(Student[] studentRecords){
-        for (int currentStudentIndex = 0; currentStudentIndex < studentRecords.length; currentStudentIndex++){
+        for (int studentRecordsIndex =0; studentRecordsIndex < studentRecords.length; studentRecordsIndex++){
             int rank =1;
-
-            for (int comparisonStudentIndex = 0; comparisonStudentIndex < studentRecords.length; comparisonStudentIndex++){
-
-                if (studentRecords[comparisonStudentIndex].totalScore > studentRecords[currentStudentIndex].totalScore){
+            for (int comparedRecordindex =0; comparedRecordindex <studentRecords.length; comparedRecordindex++){
+                if (studentRecords[comparedRecordindex].totalScore > studentRecords[studentRecordsIndex].totalScore){
                     rank++;
                 }
             }
-
-            studentRecords[currentStudentIndex].position = rank;
+            studentRecords[studentRecordsIndex].position = rank;
         }
     }
 
-
-    public static void printReport(Student[] studentRecords, String[] subjectNames) {
+    public static void printReport(Student[] studentRecords, String[] subjectNames){
         System.out.println("===================================================================");
-        System.out.print("Position\tStudent Name\t");
-        for (String subjectName : subjectNames) {
+        System.out.print("POS\tSTUDENT\t\t");
+        for (String subjectName : subjectNames){
             System.out.print(subjectName + "\t");
         }
-        System.out.println("Total\tAverage");
+        System.out.println("TOT\tAVG");
 
-        for (Student studentRecord : studentRecords) {
-            System.out.print(studentRecord.position + "\t\t" + studentRecord.studentName + "\t");
-
-            for (int subjectScore : studentRecord.subjectScores) {
-                System.out.print(subjectScore + "\t");
+        for (Student student : studentRecords){
+            System.out.print(student.position + "\t" + student.studentName + "\t\t");
+            for (int score :student.subjectScores){
+                System.out.print(score + "\t");
             }
-
-            System.out.printf("%d\t%.2f%n", studentRecord.totalScore, studentRecord.averageScore);
+            System.out.printf("%d\t%.2f%n", student.totalScore, student.averageScore);
         }
     }
 }
+
