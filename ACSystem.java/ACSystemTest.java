@@ -8,7 +8,7 @@ public class ACSystemTest {
 
     @BeforeEach
     public void setUp(){
-        myAc = new ACSystem();
+       ACSystem myAc = new ACSystem();
     }
 
     @Test

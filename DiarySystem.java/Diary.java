@@ -27,17 +27,31 @@ public class Diary {
     }
 
     public void createEntry(String title, String body) {
-        int nextId = entries.size() + 1;
+        int nextId =entries.size() + 1;
         entries.add(new Entry(nextId, title, body));
     }
 
     public void deleteEntry(int id) {
-        entries.removeIf(e -> e.getId() == id);
+        for (int count =0; count <entries.size(); count++) {
+            Entry entry = entries.get(count);
+            
+            if (entry.getId() == id) {
+                entries.remove(count);
+                break; 
+            }
+        }
     }
 
-    public Entry findEntryById(int id) {
-        return entries.stream().filter(e -> e.getId() == id).findFirst().orElse(null);
+
+public Entry findEntryById(int id) {
+    for (Entry entry :entries) {
+        if (entry.getId() == id) {
+            return entry;
+        }
     }
+    return null;
+}
+
 
     public void updateEntry(int id, String title, String body) {
         Entry entry = findEntryById(id);

@@ -10,7 +10,7 @@ public class Entry {
         this.id = id;
         this.title = title;
         this.body = body;
-        this.dateCreated = LocalDateTime.now();
+        this.dateCreated =LocalDateTime.now();
     }
 
     // Getters and Setters

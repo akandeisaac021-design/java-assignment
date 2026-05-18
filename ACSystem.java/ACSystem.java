@@ -1,7 +1,7 @@
 public class ACSystem{
 
     private int aCTemperature =0;
-    private boolean isACOn =false;
+    private boolean isACOn;
 
     public void putOnTheAC(){
 
