@@ -1,3 +1,7 @@
+package semicolon.noStrings.data.repositories;
+
+import semicolon.noStrings.data.models.User;
+
 import java.util.ArrayList;
 import java.util.List;
 

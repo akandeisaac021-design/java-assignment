@@ -1,5 +1,9 @@
+package data.repositories;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import semicolon.noStrings.data.models.Profile;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ProfileTest{

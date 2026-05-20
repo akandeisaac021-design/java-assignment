@@ -1,12 +1,12 @@
+package semicolon.noStrings.data.models;
+
 public class Profile{
-    private String id;
-    private String userId;
-    private String name;
-    private String gender;
-    private int age;
+    private final String userId;
+    private final String name;
+    private final String gender;
+    private final int age;
 
     public Profile(String id, String userId, String name, String gender, int age){
-        this.id = id;
         this.userId = userId;
         this.name = name;
         this.gender = gender;
