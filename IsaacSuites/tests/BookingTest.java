@@ -1,5 +1,8 @@
 package models;
 
+import data.models;
+import data.models.Booking;
+import data.models.Guest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.time.LocalDate;
@@ -9,13 +12,13 @@ class BookingTest {
 
     private Booking booking;
     private Guest mockGuest;
-    private Room mockRoom;
+    private models.Room mockRoom;
 
     @BeforeEach
     void setUp() {
         booking = new Booking();
         mockGuest = new Guest();
-        mockRoom = new Room();
+        mockRoom = new models.Room();
     }
 
     @Test

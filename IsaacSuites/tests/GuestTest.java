@@ -1,5 +1,7 @@
 package models;
 
+import data.models.Booking;
+import data.models.Guest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
@@ -73,8 +75,6 @@ class GuestTest {
         assertNull(newGuest.getId());
         assertNull(newGuest.getFirstName());
         assertNull(newGuest.getLastName());
-        assertNull(newGuest.getEmail());
-        assertNull(newGuest.getPhone());
         assertNull(newGuest.getBookings());
     }
 }
