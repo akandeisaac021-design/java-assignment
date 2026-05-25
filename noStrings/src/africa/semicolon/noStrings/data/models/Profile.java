@@ -1,22 +1,33 @@
 package semicolon.noStrings.data.models;
 
-public class Profile{
-    private final String userId;
-    private final String name;
-    private final String gender;
-    private final int age;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import semicolon.noStrings.data.enums.Gender;
+import java.time.LocalDate;
+import java.time.Period;
 
-    public Profile(String id, String userId, String name, String gender, int age){
-        this.userId = userId;
-        this.name = name;
-        this.gender = gender;
-        this.age = age;
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Profile {
+    private String id;
+    private String userId;
+    private String firstName;
+    private String lastName;
+    private Gender gender;
+    private LocalDate dob;
+
+    // Required for testGetName()
+    public String getName() {
+        return firstName + " " + lastName;
     }
 
-
-    public String getUserId(){ return userId; }
-    public String getGender(){ return gender; }
-    public int getAge(){ return age; }
-    public String getName(){ return name; }
+    // Required for testGetAge()
+    public int getAge() {
+        if (dob == null) {
+            return 0;
+        }
+        return Period.between(dob, LocalDate.now()).getYears();
+    }
 }
-

@@ -1,29 +1,21 @@
 package semicolon.noStrings.data.repositories;
 
 import semicolon.noStrings.data.models.User;
-
-import java.util.ArrayList;
 import java.util.List;
 
-public class UserRepository{
-    private List<User> database = new ArrayList<>();
+public interface UserRepository {
 
-    public void save(User user){
-        database.add(user);
-    }
+    User save(User user);
 
-    public User findById(String id){
-        for (User user : database){
-            if (user.getId().equals(id)) return user;
-        }
-        return null;
-    }
+    User findById(String id);
 
-    public User findByEmail(String email){
-        for (User user : database){
-            if (user.getEmail().equalsIgnoreCase(email)) return user;
-        }
-        return null;
-    }
+    User findByEmail(String email);
+
+    List<User> findAll();
+
+    void deleteById(String id);
+
+    int count();
+
+    void deleteAll();
 }
-
