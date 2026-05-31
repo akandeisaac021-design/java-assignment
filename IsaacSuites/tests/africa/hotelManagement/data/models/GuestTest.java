@@ -1,4 +1,4 @@
-package models;
+package africa.hotelManagement.data.models;
 
 import data.models.Booking;
 import data.models.Guest;

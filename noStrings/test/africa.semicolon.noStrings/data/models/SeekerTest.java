@@ -20,7 +20,7 @@ public class SeekerTest {
 
     @Test
     void testConstructorInitializesFieldsCorrectly() {
-        assertEquals(seeker.getId(), 0);
+        assertEquals(0, seeker.getId());
         assertNull(seeker.getUserId(), "userId should be null initially");
         assertNull(seeker.getPassword(), "Password should be null initially");
         assertNull(seeker.getInterests(), "Interest should be null initially");
