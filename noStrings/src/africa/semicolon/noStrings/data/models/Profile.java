@@ -18,12 +18,10 @@ public class Profile {
     private Gender gender;
     private LocalDate dob;
 
-    // Required for testGetName()
     public String getName() {
         return firstName + " " + lastName;
     }
 
-    // Required for testGetAge()
     public int getAge() {
         if (dob == null) {
             return 0;

@@ -1,5 +1,7 @@
 package data.models;
 
+import data.enums.Status;
+import data.enums.RoomType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,8 +13,8 @@ import lombok.NoArgsConstructor;
 public class Room{
     private String id;
     private String roomNumber;
-    private String type;
+    private RoomType roomType;
     private Double pricePerNight;
-    private String status;
+    private Status status;
 
 }

@@ -5,15 +5,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserRepositoryImpl implements UserRepository {
-    private static List<User> database = new ArrayList<>();
+    private static List<User> usersDatabase = new ArrayList<>();
     private static int idCounter = 1;
 
     @Override
     public User save(User user) {
 
-        for (int index = 0; index < database.size(); index++) {
-            if (database.get(index).getId().equals(user.getId())) {
-                database.set(index, user);
+        for (int index = 0; index < usersDatabase.size(); index++) {
+            if (usersDatabase.get(index).getId().equals(user.getId())) {
+                usersDatabase.set(index, user);
                 return user;
             }
         }
@@ -21,19 +21,19 @@ public class UserRepositoryImpl implements UserRepository {
         if (user.getId() == null || user.getId().isEmpty()) {
             idCounter++;
             user.setId("U" + idCounter);
-            database.add(user);
+            usersDatabase.add(user);
             return user;
         }
 
 
-        database.add(user);
+        usersDatabase.add(user);
         return user;
     }
 
 
     @Override
     public User findById(String id) {
-        for (User user : database) {
+        for (User user : usersDatabase) {
             if (user.getId() != null && user.getId().equals(id)) {
                 return user;
             }
@@ -43,7 +43,7 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public User findByEmail(String email) {
-        for (User user : database) {
+        for (User user : usersDatabase) {
             if (user.getEmail() != null && user.getEmail().equalsIgnoreCase(email)) {
                 return user;
             }
@@ -53,19 +53,19 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public List<User> findAll() {
-        return new ArrayList<>(database);
+        return new ArrayList<>(usersDatabase);
     }
 
     @Override
     public void deleteById(String id) {
-        database.removeIf(user -> user.getId() != null && user.getId().equals(id));
+        usersDatabase.removeIf(user -> user.getId() != null && user.getId().equals(id));
     }
 
     @Override
     public int count() {
-        return database.size();
+        return usersDatabase.size();
     }
 
     @Override
-    public void deleteAll(){  database.clear();}
+    public void deleteAll(){  usersDatabase.clear();}
 }

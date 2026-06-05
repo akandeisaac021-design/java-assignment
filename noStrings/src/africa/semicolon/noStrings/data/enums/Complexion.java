@@ -5,4 +5,5 @@ public enum Complexion {
     FAIR,
     LIGHTSKIN,
     DARK,
+    BLACK_ASS_NIGGA,
 }

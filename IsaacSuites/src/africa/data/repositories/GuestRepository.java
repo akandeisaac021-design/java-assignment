@@ -6,9 +6,9 @@ import java.util.Optional;
 
 public interface GuestRepository {
 
-    List<Guest> findByLastName(String lastName);
+    int findByLastName(String lastName);
 
-    List<Guest> findByFirstNameAndLastName(String firstName, String lastName);
+    int findByFirstNameAndLastName(String firstName, String lastName);
 
-    Optional<Guest> findByBookingsId(String bookingId);
+    int findByBookingsId(String bookingId);
 }

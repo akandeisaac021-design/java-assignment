@@ -140,7 +140,6 @@ public class SeekerRepositoryImplTest {
                 "Clearing the returned list should NOT affect the repository data store");
     }
 
-    // =========================== deleteById() =========================== //
     @Test
     void testDeleteById_removesSeeker() {
         Seeker saved = seekerRepository.save(buildSeeker("Ada123", Gender.FEMALE));

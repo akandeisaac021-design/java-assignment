@@ -28,7 +28,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
             testProfile = new User();
             testProfile.setEmail("jane.doe@example.com");
-            testProfile.setPassword("securePassword123");
+            testProfile.setPassword("securePassword123");;
             testProfile.setProfile(profile);
         }
 

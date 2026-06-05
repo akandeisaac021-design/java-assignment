@@ -1,5 +1,6 @@
 package data.models;
 
+import data.enums.Status;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,6 +18,6 @@ public class Booking{
     private LocalDate checkInDate;
     private LocalDate checkOutDate;
     private Double totalAmount;
-    private String status;
+    private Status status;
 
 }

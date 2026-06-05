@@ -1,6 +1,7 @@
 package semicolon.noStrings.data.repositories;
 
 import semicolon.noStrings.data.enums.Gender;
+import semicolon.noStrings.data.models.FriendRequest;
 import semicolon.noStrings.data.models.Profile;
 
 import java.util.ArrayList;
@@ -8,32 +9,35 @@ import java.util.List;
 
 public class ProfileRepositoryImpl implements ProfileRepository {
 
-    private static final List<Profile> database = new ArrayList<>();
+    private static final List<Profile> profileDatabase = new ArrayList<>();
 
     @Override
     public void save(Profile profile) {
-        if (profile == null) return;
+        if (profile == null) {
+            return;
+        }
 
         if (profile.getId() != null && !profile.getId().isEmpty()) {
-            for (int index = 0; index < database.size(); index++) {
-                if (database.get(index).getId().equals(profile.getId())) {
-                    database.set(index, profile);
+            for (int index = 0; index < profileDatabase.size(); index++) {
+                if (profileDatabase.get(index).getId().equals(profile.getId())) {
+                    profileDatabase.set(index, profile);
                     return;
                 }
             }
         }
 
-        database.add(profile);
+        profileDatabase.add(profile);
     }
 
     @Override
     public void searchForMatches(Gender gender, int minAge, int maxAge) {
         boolean matchFound = false;
+        List<Profile> searchResponse = new ArrayList<>();
 
-        for (Profile profile : database){
+        for (Profile profile : profileDatabase){
             if (profile.getGender() == gender && profile.getAge() >= minAge && profile.getAge() <= maxAge) {
 
-                matchFound = true;
+                searchResponse.add(profile);
             }
         }
 
@@ -44,10 +48,10 @@ public class ProfileRepositoryImpl implements ProfileRepository {
 
     @Override
     public void deleteAll() {
-        database.clear();
+        profileDatabase.clear();
     }
 
     public int count() {
-        return database.size();
+        return profileDatabase.size();
     }
 }

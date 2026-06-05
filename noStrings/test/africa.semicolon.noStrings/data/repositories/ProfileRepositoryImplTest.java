@@ -38,7 +38,7 @@ public class ProfileRepositoryImplTest{
         repository.save(updatedProfile);
 
         assertEquals(1, repository.count());
-    }
+   }
 
 
     @Test

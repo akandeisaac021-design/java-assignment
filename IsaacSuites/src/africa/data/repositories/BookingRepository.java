@@ -1,24 +1,23 @@
 package data.repositories;
 
+import data.enums.Status;
 import data.models.Booking;
 import data.models.Guest;
 import data.models.Room;
 
-import java.time.LocalDate;
-import java.util.List;
 
 public interface BookingRepository {
 
-    List<Booking> findByGuest(Guest guest);
+    void save(Booking booking);
 
-    List<Booking> findByRoom(Room room);
+    int count();
 
-    List<Booking> findByStatus(String status);
+    void deleteAll();
 
-    List<Booking> findByRoomAndStatusNotAndCheckInDateLessThanAndCheckOutDateGreaterThan(
-            Room room,
-            String excludedStatus,
-            LocalDate checkOut,
-            LocalDate checkIn
-    );
+    int findByGuest(Guest guest);
+
+    int findByRoom(Room room);
+
+    int findByStatus(Status status);
+
 }

@@ -20,10 +20,10 @@ public class SeekerRepositoryImpl implements SeekerRepository {
         }
 
 
-        for (int i = 0; i < seekers.size(); i++) {
-            if (seekers.get(i).getId() == seeker.getId()) {
-                // Swap the old Seeker at this position with the updated one
-                seekers.set(i, seeker);
+        for (int index = 0; index < seekers.size(); index++) {
+            if (seekers.get(index).getId() == seeker.getId()) {
+
+                seekers.set(index, seeker);
                 return seeker;
             }
         }
@@ -35,7 +35,7 @@ public class SeekerRepositoryImpl implements SeekerRepository {
     public Seeker findById(int id) {
         for (Seeker seeker : seekers) {
             if (seeker.getId() == id) {
-                return seeker; // Found — return immediately
+                return seeker;
             }
         }
         return null;

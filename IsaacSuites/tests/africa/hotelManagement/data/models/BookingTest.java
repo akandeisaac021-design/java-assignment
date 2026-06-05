@@ -1,5 +1,6 @@
 package africa.hotelManagement.data.models;
 
+import data.enums.Status;
 import data.models.Booking;
 import data.models.Guest;
 import data.models.Room;
@@ -65,7 +66,7 @@ class BookingTest {
 
     @Test
     void testStatusGetterAndSetter() {
-        String expectedStatus = "CONFIRMED";
+        Status expectedStatus = CONFIRMED;
         booking.setStatus(expectedStatus);
         assertEquals(expectedStatus, booking.getStatus(), "The status string should match.");
     }

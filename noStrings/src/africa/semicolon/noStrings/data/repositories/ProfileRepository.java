@@ -5,9 +5,9 @@ import semicolon.noStrings.data.models.Profile;
 
 public interface ProfileRepository {
 
-    default void save(Profile profile){}
+    void save(Profile profile);
 
-    default void searchForMatches(Gender gender, int minAge, int maxAge){}
+    void searchForMatches(Gender gender, int minAge, int maxAge);
 
-    default void deleteAll(){}
+    void deleteAll();
 }
