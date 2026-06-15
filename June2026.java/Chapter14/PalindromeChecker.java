@@ -5,7 +5,7 @@ public class PalindromeChecker {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Enter a word: ");
-        String word = input.nextLine();
+        String word = scanner.nextLine();
 
         String reversed = new StringBuilder(word).reverse().toString();
 

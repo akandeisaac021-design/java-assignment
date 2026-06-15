@@ -10,7 +10,7 @@ public class ReverseWords {
         String[] words = sentence.split(" ");
 
         for (int index= words.length - 1; index >= 0; index--) {
-            System.out.print(words[i] + " ");
+            System.out.print(words[index] + " ");
         }
 
         scanner.close();

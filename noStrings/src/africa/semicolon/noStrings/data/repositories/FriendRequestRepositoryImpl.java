@@ -30,7 +30,7 @@ public class FriendRequestRepositoryImpl implements FriendRequestRepository{
     public FriendRequest searchForRequestById(String requestId) {
         boolean matchFound = false;
 
-        for (FriendRequest friendRequest : friendRequestDatabase){
+        for (FriendRequest friendRequest : friendRequestDatabase) {
             if (friendRequest.getRequestId().equals(requestId)) {
                 return friendRequest;
             }
@@ -39,6 +39,7 @@ public class FriendRequestRepositoryImpl implements FriendRequestRepository{
         if (!matchFound) {
             System.out.println("No matching profiles found.");
         }
+        return null;
     }
 
     @Override

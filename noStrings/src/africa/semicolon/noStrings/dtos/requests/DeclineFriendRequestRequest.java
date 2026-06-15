@@ -1,22 +1,25 @@
 package semicolon.noStrings.dtos.requests;
 
 import semicolon.noStrings.data.enums.FriendRequestStatus;
-import semicolon.noStrings.dtos.response.AcceptFriendRequestResponse;
+import semicolon.noStrings.data.models.FriendRequest;
+import semicolon.noStrings.dtos.response.DeclineFriendRequestResponse;
 
 import static semicolon.noStrings.data.enums.FriendRequestStatus.*;
 
 public class DeclineFriendRequestRequest{
 
+    FriendRequest friendRequest =new FriendRequest();
+    FriendRequestStatus status =friendRequest.getFriendRequestStatus();
 
-    FriendRequestStatus status =PENDING;
-    AcceptFriendRequestResponse response =new AcceptFriendRequestResponse();
+    DeclineFriendRequestResponse response =new DeclineFriendRequestResponse();
 
-    public FriendRequestStatus acceptFriendRequestRequest(){
+    public void declineFriendRequestRequest(){
 
         if (status == PENDING || status == DECLINED){
-            return status = response.acceptFriendRequestResponse();
-       }
+            response.declineFriendRequestResponse();
+            return;
+        }
 
-        return ACCEPTED;
+        friendRequest.setFriendRequestStatus(DECLINED);
     }
 }

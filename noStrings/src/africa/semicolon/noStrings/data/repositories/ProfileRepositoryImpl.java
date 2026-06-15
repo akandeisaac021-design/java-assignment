@@ -1,7 +1,6 @@
 package semicolon.noStrings.data.repositories;
 
 import semicolon.noStrings.data.enums.Gender;
-import semicolon.noStrings.data.models.FriendRequest;
 import semicolon.noStrings.data.models.Profile;
 
 import java.util.ArrayList;

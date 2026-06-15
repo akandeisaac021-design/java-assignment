@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserRepositoryImpl implements UserRepository {
-    private static List<User> usersDatabase = new ArrayList<>();
+    private static final List<User> usersDatabase = new ArrayList<>();
     private static int idCounter = 1;
 
     @Override

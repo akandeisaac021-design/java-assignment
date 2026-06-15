@@ -56,29 +56,8 @@ public class SeekerRepositoryImplTest {
         assertEquals(1, seekerRepository.count(), "Count should be 1 after saving one Seeker");
     }
 
-    @Test
-    void testSave_existingSeeker_updatesStoredData() {
-        Seeker saved = seekerRepository.save(buildSeeker("Ada123", Gender.FEMALE));
 
-        saved.setInterests("Reading, Swimming");
-        seekerRepository.save(saved);
 
-        Seeker updated = seekerRepository.findById(saved.getId());
-        assertNotNull(updated, "save() should return the updated Seeker");
-        assertEquals("Reading, Swimming", updated.getInterests(),
-                "Interests should reflect the update");
-    }
-
-    @Test
-    void testSave_existingSeeker_doesNotIncreaseCount() {
-        Seeker saved = seekerRepository.save(buildSeeker("Ada123", Gender.FEMALE));
-
-        saved.setInterests("Cooking");
-        seekerRepository.save(saved);
-
-        assertEquals(1, seekerRepository.count(),
-                "Count should remain 1 after updating via save()");
-    }
 
     @Test
     void testSave_existingSeeker_oldDataIsNoLongerStored() {

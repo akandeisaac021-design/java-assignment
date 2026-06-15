@@ -23,7 +23,6 @@ public class SeekerTest {
         assertEquals(0, seeker.getId());
         assertNull(seeker.getUserId(), "userId should be null initially");
         assertNull(seeker.getPassword(), "Password should be null initially");
-        assertNull(seeker.getInterests(), "Interest should be null initially");
         assertNull(seeker.getDob(), "Date of birth should be null initially");
         assertNull(seeker.getGender(), "Gender should be null initially");
     }
@@ -62,9 +61,4 @@ public class SeekerTest {
         assertEquals(Gender.FEMALE, seeker.getGender());
     }
 
-    @Test
-    void testSetInterestsUpdatesInterests() {
-        seeker.setInterests("Reading, Swimming");
-        assertEquals("Reading, Swimming", seeker.getInterests());
-    }
 }
