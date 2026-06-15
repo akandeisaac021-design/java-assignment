@@ -37,7 +37,7 @@ class JsonConverterTest {
 
     @Test
     void testCanDeSerializeJsonToTransaction(){
-        String json = "{\"id\":\"1\",\"sender\":\"Ene\",\"recipient\":\"Victor\",\"amount\":\"10\"}";
+        String json = "{\"id\":\"1\",\"sender\":\"Ene\",\"recipient\":\"Victor\",\"amount\":\"10\",\"time\":\"2026-06-15T12:00:00\"}";
         Transaction transaction = JsonConverter.deserialize(json);
         assertNotNull(transaction);
         assertEquals("10", transaction.getAmount());
