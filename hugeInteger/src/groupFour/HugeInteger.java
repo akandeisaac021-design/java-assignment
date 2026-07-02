@@ -1,25 +1,113 @@
 package groupFour;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class HugeInteger {
 
-    public int[] parse(String numbers) {
+    private final int[] numbers;
+    private static final int MAX_NUMBER_OF_DIGITS = 40;
 
-        if(numbers.matches("[^0-9]+ {1,40}")){
-            throw new IllegalArgumentException("input cannot be empty");
+    public HugeInteger(String numberStr) {
+        this.numbers = parse(numberStr);
+    }
+
+    private HugeInteger(int[] numbers) {
+        this.numbers = numbers;
+    }
+
+    public int[] parse(String numberStr) {
+        int[] parsed = new int[MAX_NUMBER_OF_DIGITS];
+        int length = numberStr.length();
+
+        if (length > MAX_NUMBER_OF_DIGITS) {
+            throw new IllegalArgumentException("Number exceeds maximum limit of 40 digits.");
         }
 
-        int [] hugeIntegerArray = new int[numbers.length()];
-
-//        List<Integer> hugeIntegerArray = new ArrayList<>();
-
-        for(int count = 0; count < numbers.length(); count ++){
-
-            hugeIntegerArray[count] = numbers.charAt(count) - '0';
+        for (int index = 0; index < length; index++) {
+            char digit = numberStr.charAt(length - 1 - index);
+            if (!Character.isDigit(digit)) {
+                throw new IllegalArgumentException("String must contain only digits.");
+            }
+            parsed[MAX_NUMBER_OF_DIGITS - 1 - index] = Character.getNumericValue(digit);
         }
-        return hugeIntegerArray;
+        return parsed;
+    }
+
+    public HugeInteger add(HugeInteger other) {
+        int[] result = new int[MAX_NUMBER_OF_DIGITS];
+        int carry = 0;
+
+        for (int index = MAX_NUMBER_OF_DIGITS - 1; index >= 0; index--) {
+            int sum = this.numbers[index] + other.numbers[index] + carry;
+            result[index] = sum % 10;
+            carry = sum / 10;
+        }
+
+        if (carry > 0) {
+            throw new ArithmeticException("Overflow: Sum exceeds 40 digits.");
+        }
+
+        return new HugeInteger(result);
+    }
+
+    public HugeInteger subtract(HugeInteger other) {
+        if (this.isLessThan(other)) {
+            throw new ArithmeticException("Negative result not supported by this implementation.");
+        }
+
+        int[] result = new int[MAX_NUMBER_OF_DIGITS];
+        int borrow = 0;
+
+        for (int index = MAX_NUMBER_OF_DIGITS - 1; index >= 0; index--) {
+            int diff = this.numbers[index] - other.numbers[index] - borrow;
+            if (diff < 0) {
+                diff += 10;
+                borrow = 1;
+            } else {
+                borrow = 0;
+            }
+            result[index] = diff;
+        }
+
+        return new HugeInteger(result);
+    }
+
+    public boolean isEqualTo(HugeInteger other) {
+        for (int index = 0; index < MAX_NUMBER_OF_DIGITS; index++) {
+            if (this.numbers[index] != other.numbers[index]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean isNotEqualTo(HugeInteger other) {
+
+        return !this.isEqualTo(other);
+    }
+
+    public boolean isGreaterThan(HugeInteger other) {
+        for (int index = 0; index < MAX_NUMBER_OF_DIGITS; index++) {
+            if (this.numbers[index] > other.numbers[index]) return true;
+            if (this.numbers[index] < other.numbers[index]) return false;
+        }
+        return false;
+    }
+
+
+    public boolean isLessThan(HugeInteger other) {
+        for (int index = 0; index < MAX_NUMBER_OF_DIGITS; index++) {
+            if (this.numbers[index] < other.numbers[index]) return true;
+            if (this.numbers[index] > other.numbers[index]) return false;
+        }
+        return false;
+    }
+
+    public boolean isGreaterThanOrEqualsTo(HugeInteger other) {
+        return this.isGreaterThan(other) || this.isEqualTo(other);
+    }
+
+    public boolean isLessThanOrEqualsTo(HugeInteger other) {
+
+        return this.isLessThan(other) || this.isEqualTo(other);
     }
 
     public String toString(int [] numbers){
@@ -36,17 +124,4 @@ public class HugeInteger {
         result +="]";
         return result;
     }
-
-    public boolean isEqualTo(int [] array1, int [] array2){
-
-        return array1 == array2;
-    }
-
-    public boolean isNotEqualTo(int [] array1, int [] array2){
-        return array1 != array2;
-    }
-
-    /*isGreaterThan,isLessThan,isGreaterThanOrEqualsTo,isLessThanOrEqualsTo,addition,subtraction,?constructor*/
-
-
 }
