@@ -1,10 +1,9 @@
-package data.repositories;
+package africa.semicolon.noStrings.data.repositories;
 
+import africa.semicolon.noStrings.data.enums.FriendRequestStatus;
+import africa.semicolon.noStrings.data.models.FriendRequest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import semicolon.noStrings.data.models.FriendRequest;
-import semicolon.noStrings.data.repositories.FriendRequestRepository;
-import semicolon.noStrings.data.repositories.FriendRequestRepositoryImpl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -15,29 +14,25 @@ class FriendRequestRepositoryImplTest {
     @BeforeEach
     void setUp() {
         repository = new FriendRequestRepositoryImpl();
-        repository.deleteAll();
     }
 
     @Test
     void testSaveNewFriendRequest_CanBeFoundById() {
         FriendRequest request = new FriendRequest();
-        request.setRequestId("req-111");
         request.setMessage("Hello, let's connect!");
+        request.setFriendRequestStatus(FriendRequestStatus.PENDING);
 
-        repository.save(request);
-        FriendRequest foundRequest = repository.findById("req-111");
+        FriendRequest saved = repository.save(request);
+        FriendRequest foundRequest = repository.findById(saved.getRequestId()).orElse(null);
 
         assertNotNull(foundRequest);
-        assertEquals("req-111", foundRequest.getRequestId());
         assertEquals("Hello, let's connect!", foundRequest.getMessage());
     }
 
     @Test
     void testSaveNullFriendRequest_DoesNotModifyDatabase() {
         repository.save(null);
-        FriendRequest foundRequest = repository.findById("any-id");
-
-        assertNull(foundRequest);
+        assertTrue(repository.findById("any-id").isEmpty());
     }
 
     @Test
@@ -52,32 +47,28 @@ class FriendRequestRepositoryImplTest {
         updatedRequest.setMessage("Updated Message");
         repository.save(updatedRequest);
 
-        FriendRequest foundRequest = repository.findById("req-222");
+        FriendRequest foundRequest = repository.findById("req-222").orElse(null);
 
         assertNotNull(foundRequest);
         assertEquals("Updated Message", foundRequest.getMessage());
     }
 
     @Test
-    void testFindById_ReturnsNullWhenNotFound() {
-        FriendRequest foundRequest = repository.findById("non-existent-id");
-
-        assertNull(foundRequest);
+    void testFindById_ReturnsEmptyWhenNotFound() {
+        assertTrue(repository.findById("non-existent-id").isEmpty());
     }
 
     @Test
     void testDeleteAll_RemovesAllSavedRequests() {
         FriendRequest request1 = new FriendRequest();
-        request1.setRequestId("id-1");
         FriendRequest request2 = new FriendRequest();
-        request2.setRequestId("id-2");
 
-        repository.save(request1);
-        repository.save(request2);
+        FriendRequest saved1 = repository.save(request1);
+        FriendRequest saved2 = repository.save(request2);
 
         repository.deleteAll();
 
-        assertNull(repository.findById("id-1"));
-        assertNull(repository.findById("id-2"));
+        assertTrue(repository.findById(saved1.getRequestId()).isEmpty());
+        assertTrue(repository.findById(saved2.getRequestId()).isEmpty());
     }
 }

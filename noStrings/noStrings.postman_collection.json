@@ -1,0 +1,112 @@
+{
+  "info": {
+    "name": "noStrings MVP",
+    "description": "Register two users, send a friend request with a message, then accept/decline it as the other user.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:8080" },
+    { "key": "userAId", "value": "" },
+    { "key": "userBId", "value": "" },
+    { "key": "requestId", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "1. Register User A",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const body = pm.response.json();",
+              "pm.collectionVariables.set('userAId', body.userId);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": "{{baseUrl}}/api/noStrings/register",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"ada@example.com\",\n  \"password\": \"password123\",\n  \"firstName\": \"Ada\",\n  \"lastName\": \"Lovelace\",\n  \"gender\": \"FEMALE\",\n  \"dob\": \"1998-05-21\"\n}"
+        }
+      }
+    },
+    {
+      "name": "2. Register User B",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const body = pm.response.json();",
+              "pm.collectionVariables.set('userBId', body.userId);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": "{{baseUrl}}/api/noStrings/register",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"emeka@example.com\",\n  \"password\": \"password456\",\n  \"firstName\": \"Emeka\",\n  \"lastName\": \"Okafor\",\n  \"gender\": \"MALE\",\n  \"dob\": \"1996-03-10\"\n}"
+        }
+      }
+    },
+    {
+      "name": "3. User A sends friend request to User B",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const body = pm.response.json();",
+              "pm.collectionVariables.set('requestId', body.requestId);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": "{{baseUrl}}/api/noStrings/friend-requests",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"senderId\": \"{{userAId}}\",\n  \"receiverId\": \"{{userBId}}\",\n  \"message\": \"Hey, would love to connect!\"\n}"
+        }
+      }
+    },
+    {
+      "name": "4. User B views inbox",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/noStrings/friend-requests/inbox/{{userBId}}"
+      }
+    },
+    {
+      "name": "5. User B accepts the request",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/noStrings/friend-requests/{{requestId}}/accept"
+      }
+    },
+    {
+      "name": "5b. User B declines the request (alternative)",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/noStrings/friend-requests/{{requestId}}/decline"
+      }
+    },
+    {
+      "name": "6. View all friend requests",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/noStrings/friend-requests"
+      }
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+/* Background gradient setup for the page */
+.gradient-bg {
+    background: linear-gradient(135deg, #111827 0%, #cc92ea 50%, #e55e5e 100%);
+}
+
+/* Accent clip gradient for key text elements */
+.text-gradient {
+    background: linear-gradient(90deg, #ecdbde 0%, #ec4899 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+

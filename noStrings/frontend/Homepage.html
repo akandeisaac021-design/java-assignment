@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NoStrings | Make Connection Without Complications</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="gradient-bg text-gray-100 font-sans min-h-screen flex flex-col justify-between selection:bg-rose-500 selection:text-white">
+
+    <!-- Navigation -->
+    <header class="w-full max-w-7xl mx-auto px-6 py-5 flex justify-between items-center relative z-10">
+        <div class="flex items-center space-x-2">
+            <span class="text-2xl font-black tracking-wider text-white">No<span class="text-rose-500">Strings</span></span>
+        </div>
+        <nav class="hidden md:flex space-x-8 text-sm font-medium tracking-wide text-gray-300">
+            <a href="#features" class="hover:text-rose-400 transition">Features</a>
+            <a href="#safety" class="hover:text-rose-400 transition">Safety</a>
+            <a href="#faq" class="hover:text-rose-400 transition">FAQ</a>
+        </nav>
+        <button class="bg-white/10 hover:bg-white/20 border border-white/20 px-5 py-2 rounded-full text-sm font-medium transition backdrop-blur-sm">
+            Sign In
+        </button>
+    </header>
+
+    <!-- Hero Section -->
+    <main class="w-full max-w-7xl mx-auto px-6 flex-grow flex flex-col lg:flex-row items-center justify-center gap-12 py-12 lg:py-24 relative z-10">
+        
+        <!-- Left Column: Copy & CTAs -->
+        <div class="w-full lg:w-1/2 flex flex-col space-y-6 text-center lg:text-left">
+            <div class="inline-flex items-center justify-center lg:justify-start space-x-2">
+                <span class="bg-rose-500/10 text-rose-400 text-xs font-semibold tracking-widest uppercase px-3 py-1 rounded-full border border-rose-500/20">
+                    Dating Redefined
+                </span>
+            </div>
+            <h1 class="text-4xl sm:text-6xl font-black tracking-tight leading-tight text-white">
+                Connection Without <br class="hidden sm:inline">
+                <span class="text-gradient">Complications.</span>
+            </h1>
+            <p class="text-gray-400 text-base sm:text-lg max-w-md mx-auto lg:mx-0 leading-relaxed">
+                Skip the games and the unspoken expectations. NoStrings helps you find local singles looking for exactly the same thing you are.
+            </p>
+            
+            <!-- App Badges / CTAs -->
+            <div class="flex flex-col sm:flex-row justify-center lg:justify-start items-center gap-4 pt-4">
+                <button class="w-full sm:w-auto bg-gradient-to-r from-rose-500 to-pink-600 hover:from-rose-600 hover:to-pink-700 text-white font-semibold px-8 py-4 rounded-xl shadow-lg shadow-rose-500/20 transition-transform active:scale-95 text-center">
+                    Create Account
+                </button>
+                <button class="w-full sm:w-auto bg-gray-800/80 hover:bg-gray-800 border border-gray-700 text-white font-medium px-8 py-4 rounded-xl transition flex items-center justify-center space-x-2">
+                    <span>Download App</span>
+                </button>
+            </div>
+
+            <!-- Stats Brief -->
+            <div class="flex justify-center lg:justify-start space-x-8 pt-8 border-t border-gray-800">
+                <div>
+                    <p class="text-2xl font-bold text-white">2.4M</p>
+                    <p class="text-xs text-gray-500 uppercase tracking-wider">Active Matches</p>
+                </div>
+                <div>
+                    <p class="text-2xl font-bold text-white">100%</p>
+                    <p class="text-xs text-gray-500 uppercase tracking-wider">Verified Profiles</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="w-full lg:w-1/2 flex justify-center relative">
+            <!-- Background Glow Effect -->
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-pink-500/20 rounded-full blur-3xl -z-10"></div>
+            
+            <!-- Mockup Card -->
+            <div class="w-72 sm:w-80 bg-gray-900 border border-gray-800 rounded-3xl p-4 shadow-2xl shadow-black/50 transform rotate-2 hover:rotate-0 transition duration-500">
+                <div class="relative rounded-2xl overflow-hidden aspect-[3/4] bg-gray-800">
+                    <img src="https://unsplash.com" alt="User Profile" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-4">
+                        <div class="flex items-center space-x-2">
+                            <h3 class="text-xl font-bold text-white">Chloe, 26</h3>
+                            <span class="w-2.5 h-2.5 bg-green-500 rounded-full"></span>
+                        </div>
+                        <p class="text-xs text-gray-300 mt-1">Loves live music, rooftop bars, and zero pressure.</p>
+                        <div class="flex space-x-2 mt-3">
+                            <span class="bg-white/10 text-white text-[10px] px-2 py-1 rounded-md backdrop-blur-sm">No Strings</span>
+                            <span class="bg-white/10 text-white text-[10px] px-2 py-1 rounded-md backdrop-blur-sm">Casual Dating</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons Simulation -->
+                <div class="flex justify-between items-center px-4 pt-4 pb-2">
+                    <button class="w-12 h-12 rounded-full bg-gray-800 border border-gray-700 flex items-center justify-center text-gray-400 hover:text-rose-500 hover:border-rose-500/50 transition">
+                        ✕
+                    </button>
+                    <button class="w-14 h-14 rounded-full bg-gradient-to-r from-rose-500 to-pink-600 flex items-center justify-center text-white font-bold shadow-lg shadow-rose-500/30 hover:scale-105 transition">
+                        ✓
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full max-w-7xl mx-auto px-6 py-8 border-t border-gray-900 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-gray-500 relative z-10">
+        <p>&copy; 2026 NoStrings Interactive. For adults only (18+).</p>
+        <div class="flex space-x-6">
+            <a href="#" class="hover:text-gray-400 transition">Privacy Policy</a>
+            <a href="#" class="hover:text-gray-400 transition">Terms of Service</a>
+            <a href="#" class="hover:text-gray-400 transition">Cookie Settings</a>
+        </div>
+    </footer>
+
+</body>
+</html>

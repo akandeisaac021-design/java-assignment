@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NoStrings | Make Connection Without Complications</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="gradient-bg text-gray-100 font-sans min-h-screen flex flex-col justify-between selection:bg-rose-500 selection:text-white">
+
+    <!-- Navigation -->
+    <header class="w-full max-w-7xl mx-auto px-6 py-5 relative z-10">
+        <div class="flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2">
+                <span class="text-2xl font-black tracking-wider text-white">No<span class="text-rose-500">Strings</span></span>
+            </a>
+            <nav class="hidden md:flex space-x-8 text-sm font-medium tracking-wide text-gray-300">
+                <a href="#features" class="hover:text-rose-400 transition">Features</a>
+                <a href="#safety" class="hover:text-rose-400 transition">Safety</a>
+                <a href="#faq" class="hover:text-rose-400 transition">FAQ</a>
+            </nav>
+            <div class="hidden md:flex items-center space-x-3">
+                <a href="signin.html" id="signin-link" class="bg-white/10 hover:bg-white/20 border border-white/20 px-5 py-2 rounded-full text-sm font-medium transition backdrop-blur-sm">
+                    Sign In
+                </a>
+                <a href="dashboard.html" id="dashboard-link" class="hidden bg-white/10 hover:bg-white/20 border border-white/20 px-5 py-2 rounded-full text-sm font-medium transition backdrop-blur-sm">
+                    Dashboard
+                </a>
+            </div>
+            <!-- Mobile hamburger -->
+            <button id="nav-toggle" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden w-10 h-10 flex items-center justify-center rounded-lg border border-white/15 bg-white/5">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="mobile-nav md:hidden mt-4">
+            <div class="surface rounded-2xl p-4 flex flex-col space-y-3 text-sm">
+                <a href="#features" class="py-1 text-gray-300 hover:text-rose-400">Features</a>
+                <a href="#safety" class="py-1 text-gray-300 hover:text-rose-400">Safety</a>
+                <a href="#faq" class="py-1 text-gray-300 hover:text-rose-400">FAQ</a>
+                <hr class="border-white/10">
+                <a href="signin.html" id="signin-link-mobile" class="text-center bg-white/10 border border-white/20 px-5 py-2.5 rounded-full font-medium">Sign In</a>
+                <a href="register.html" class="text-center btn-primary text-white px-5 py-2.5 rounded-full font-semibold">Create Account</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <main class="w-full max-w-7xl mx-auto px-6 flex-grow flex flex-col lg:flex-row items-center justify-center gap-12 py-12 lg:py-24 relative z-10">
+
+        <!-- Left Column: Copy & CTAs -->
+        <div class="w-full lg:w-1/2 flex flex-col space-y-6 text-center lg:text-left">
+            <div class="inline-flex items-center justify-center lg:justify-start space-x-2">
+                <span class="bg-rose-500/10 text-rose-400 text-xs font-semibold tracking-widest uppercase px-3 py-1 rounded-full border border-rose-500/20">
+                    Dating Redefined
+                </span>
+            </div>
+            <h1 class="text-4xl sm:text-6xl font-black tracking-tight leading-tight text-white">
+                Connection Without <br class="hidden sm:inline">
+                <span class="text-gradient">Complications.</span>
+            </h1>
+            <p class="text-gray-400 text-base sm:text-lg max-w-md mx-auto lg:mx-0 leading-relaxed">
+                Skip the games and the unspoken expectations. NoStrings helps you find local singles looking for exactly the same thing you are.
+            </p>
+
+            <!-- CTAs -->
+            <div class="flex flex-col sm:flex-row justify-center lg:justify-start items-center gap-4 pt-4">
+                <a href="register.html" class="w-full sm:w-auto btn-primary text-white font-semibold px-8 py-4 rounded-xl shadow-lg shadow-rose-500/20 transition-transform active:scale-95 text-center">
+                    Create Account
+                </a>
+                <a href="signin.html" class="w-full sm:w-auto bg-gray-800/80 hover:bg-gray-800 border border-gray-700 text-white font-medium px-8 py-4 rounded-xl transition flex items-center justify-center space-x-2 text-center">
+                    <span>Sign In</span>
+                </a>
+            </div>
+
+            <!-- Stats Brief -->
+            <div class="flex justify-center lg:justify-start space-x-8 pt-8 border-t border-gray-800">
+                <div>
+                    <p class="text-2xl font-bold text-white">2.4M</p>
+                    <p class="text-xs text-gray-500 uppercase tracking-wider">Active Matches</p>
+                </div>
+                <div>
+                    <p class="text-2xl font-bold text-white">100%</p>
+                    <p class="text-xs text-gray-500 uppercase tracking-wider">Verified Profiles</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-full lg:w-1/2 flex justify-center relative">
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-pink-500/20 rounded-full blur-3xl -z-10"></div>
+
+            <!-- Mockup Card -->
+            <div class="w-72 sm:w-80 bg-gray-900 border border-gray-800 rounded-3xl p-4 shadow-2xl shadow-black/50 transform rotate-2 hover:rotate-0 transition duration-500">
+                <div class="relative rounded-2xl overflow-hidden aspect-[3/4] bg-gradient-to-br from-rose-500/30 via-gray-800 to-pink-900/40 flex items-end">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-4">
+                        <div class="flex items-center space-x-2">
+                            <h3 class="text-xl font-bold text-white">Chloe, 26</h3>
+                            <span class="w-2.5 h-2.5 bg-green-500 rounded-full"></span>
+                        </div>
+                        <p class="text-xs text-gray-300 mt-1">Loves live music, rooftop bars, and zero pressure.</p>
+                        <div class="flex space-x-2 mt-3">
+                            <span class="bg-white/10 text-white text-[10px] px-2 py-1 rounded-md backdrop-blur-sm">No Strings</span>
+                            <span class="bg-white/10 text-white text-[10px] px-2 py-1 rounded-md backdrop-blur-sm">Casual Dating</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex justify-between items-center px-4 pt-4 pb-2">
+                    <button class="w-12 h-12 rounded-full bg-gray-800 border border-gray-700 flex items-center justify-center text-gray-400 hover:text-rose-500 hover:border-rose-500/50 transition">
+                        ✕
+                    </button>
+                    <a href="register.html" class="w-14 h-14 rounded-full bg-gradient-to-r from-rose-500 to-pink-600 flex items-center justify-center text-white font-bold shadow-lg shadow-rose-500/30 hover:scale-105 transition">
+                        ✓
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Features -->
+    <section id="features" class="w-full max-w-7xl mx-auto px-6 py-16 relative z-10">
+        <h2 class="text-2xl sm:text-3xl font-black text-white text-center mb-10">What you can do on NoStrings</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <div class="surface rounded-2xl p-6">
+                <div class="w-10 h-10 rounded-xl bg-rose-500/15 flex items-center justify-center text-rose-400 mb-4">✍️</div>
+                <h3 class="font-bold text-white mb-1">Quick sign-up</h3>
+                <p class="text-sm text-gray-400">Create your profile in under a minute — no lengthy questionnaires.</p>
+            </div>
+            <div class="surface rounded-2xl p-6">
+                <div class="w-10 h-10 rounded-xl bg-rose-500/15 flex items-center justify-center text-rose-400 mb-4">💌</div>
+                <h3 class="font-bold text-white mb-1">Send friend requests</h3>
+                <p class="text-sm text-gray-400">Reach out with a short intro message — no pressure, no scripts.</p>
+            </div>
+            <div class="surface rounded-2xl p-6">
+                <div class="w-10 h-10 rounded-xl bg-rose-500/15 flex items-center justify-center text-rose-400 mb-4">📥</div>
+                <h3 class="font-bold text-white mb-1">Manage your inbox</h3>
+                <p class="text-sm text-gray-400">Accept or decline requests at your own pace, all in one place.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="safety" class="w-full max-w-7xl mx-auto px-6 py-4 relative z-10">
+        <div class="surface rounded-2xl p-6 sm:p-8 text-center">
+            <h2 class="text-xl sm:text-2xl font-black text-white mb-2">Adults-only, at your own pace</h2>
+            <p class="text-sm sm:text-base text-gray-400 max-w-2xl mx-auto">You control who you connect with. Requests only turn into a connection when both sides accept — no strings, no surprises.</p>
+        </div>
+    </section>
+
+    <section id="faq" class="w-full max-w-7xl mx-auto px-6 py-16 relative z-10">
+        <h2 class="text-2xl sm:text-3xl font-black text-white text-center mb-10">FAQ</h2>
+        <div class="max-w-2xl mx-auto space-y-4">
+            <details class="surface rounded-2xl p-5 group">
+                <summary class="cursor-pointer font-semibold text-white flex justify-between items-center">
+                    How do I sign back in later?
+                    <span class="text-rose-400 group-open:rotate-45 transition">+</span>
+                </summary>
+                <p class="text-sm text-gray-400 mt-3">Save the User ID shown after you register — it's your key to sign back in on the Sign In page.</p>
+            </details>
+            <details class="surface rounded-2xl p-5 group">
+                <summary class="cursor-pointer font-semibold text-white flex justify-between items-center">
+                    Do I need to be 18+?
+                    <span class="text-rose-400 group-open:rotate-45 transition">+</span>
+                </summary>
+                <p class="text-sm text-gray-400 mt-3">Yes. Registration is only available to adults 18 and over.</p>
+            </details>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="w-full max-w-7xl mx-auto px-6 py-8 border-t border-gray-900 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-gray-500 relative z-10">
+        <p>&copy; 2026 NoStrings Interactive. For adults only (18+).</p>
+        <div class="flex space-x-6">
+            <a href="#" class="hover:text-gray-400 transition">Privacy Policy</a>
+            <a href="#" class="hover:text-gray-400 transition">Terms of Service</a>
+            <a href="#" class="hover:text-gray-400 transition">Cookie Settings</a>
+        </div>
+    </footer>
+
+    <script src="js/api.js"></script>
+    <script>
+        // Swap the CTA to "Dashboard" if the person already has a saved session.
+        const session = Session.get();
+        if (session && session.userId) {
+            document.getElementById("signin-link").classList.add("hidden");
+            document.getElementById("dashboard-link").classList.remove("hidden");
+            document.getElementById("signin-link-mobile").textContent = "Go to Dashboard";
+            document.getElementById("signin-link-mobile").href = "dashboard.html";
+        }
+    </script>
+</body>
+</html>
