@@ -1,5 +1,8 @@
 package com.example.gutenberglibrary.service;
 
+import com.example.gutenberglibrary.entity.SearchType;
+import java.util.Set;
+import java.util.TreeSet;
 import com.example.gutenberglibrary.dto.GutenbergBookDto;
 import com.example.gutenberglibrary.dto.GutenbergSearchResponse;
 import com.example.gutenberglibrary.entity.Book;
@@ -21,14 +24,26 @@ import java.util.Locale;
 @RequiredArgsConstructor
 public class BookService {
 
+    private final SearchLogService searchLogService;
     private final BookRepository bookRepository;
     private final GutenbergApiClient apiClient;
 
 
     @Transactional
-    public List<Book> findByCategory(String category) {
+    public List<Book> findByCategory(String category, String requestedBy) {
         String term = requireNonBlank(category, "category");
+        String requester = requireNonBlank(requestedBy, "requestedBy");
 
+        List<Book> results = resolveByCategory(term);
+
+        searchLogService.record(SearchType.CATEGORY, term, requester, results.size());
+        if (results.isEmpty()) {
+            throw new BookNotFoundException("No books found for category: " + term);
+        }
+        return results;
+    }
+
+    private List<Book> resolveByCategory(String term) {
         List<Book> cached = bookRepository.findBySubjectsContainingIgnoreCase(term);
         if (!cached.isEmpty()) {
             log.info("Category '{}' served from cache ({} books)", term, cached.size());
@@ -39,22 +54,42 @@ public class BookService {
         GutenbergSearchResponse response = apiClient.searchByCategory(term);
         List<Book> persisted = persistAll(response);
 
-        List<Book> matches = persisted.stream()
+        return persisted.stream()
                 .filter(b -> b.getSubjects() != null
                         && b.getSubjects().toLowerCase(Locale.ROOT).contains(term.toLowerCase(Locale.ROOT)))
                 .toList();
-
-        if (matches.isEmpty()) {
-            throw new BookNotFoundException("No books found for category: " + term);
-        }
-        return matches;
     }
 
-
     @Transactional
-    public List<Book> findByAuthor(String authorName) {
+    public List<Book> findByAuthor(String authorName, String requestedBy) {
         String term = requireNonBlank(authorName, "authorName");
+        String requester = requireNonBlank(requestedBy, "requestedBy");
 
+        List<Book> results = resolveByAuthor(term);
+
+        searchLogService.record(SearchType.AUTHOR, term, requester, results.size());
+        if (results.isEmpty()) {
+            throw new BookNotFoundException("No books found for author: " + term);
+        }
+        return results;
+    }
+
+    /** Distinct individual subject values, split from comma-separated storage, deduped case-insensitively. */
+    @Transactional(readOnly = true)
+    public List<String> getAllCategories() {
+        Set<String> categories = new TreeSet<>(String.CASE_INSENSITIVE_ORDER);
+        for (String subjectsCsv : bookRepository.findAllSubjectStrings()) {
+            for (String subject : subjectsCsv.split(",")) {
+                String trimmed = subject.trim();
+                if (!trimmed.isEmpty()) {
+                    categories.add(trimmed);
+                }
+            }
+        }
+        return List.copyOf(categories);
+    }
+
+    private List<Book> resolveByAuthor(String term) {
         List<Book> cached = bookRepository.findByAuthorContainingIgnoreCase(term);
         if (!cached.isEmpty()) {
             log.info("Author '{}' served from cache ({} books)", term, cached.size());
@@ -65,17 +100,10 @@ public class BookService {
         GutenbergSearchResponse response = apiClient.searchByAuthor(term);
         List<Book> persisted = persistAll(response);
 
-        // The API's "search" param is full-text (titles + authors), so filter
-        // down to results that actually match the requested author.
-        List<Book> matches = persisted.stream()
+        return persisted.stream()
                 .filter(b -> b.getAuthor() != null
                         && b.getAuthor().toLowerCase(Locale.ROOT).contains(term.toLowerCase(Locale.ROOT)))
                 .toList();
-
-        if (matches.isEmpty()) {
-            throw new BookNotFoundException("No books found for author: " + term);
-        }
-        return matches;
     }
 
     /** Manual sync used by POST /api/books/sync?q= to seed/refresh the DB. */

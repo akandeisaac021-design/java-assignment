@@ -4,8 +4,6 @@ import com.example.gutenberglibrary.dto.BookResponse;
 import com.example.gutenberglibrary.entity.Book;
 import com.example.gutenberglibrary.service.BookService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,22 +16,25 @@ public class BookController {
 
     private final BookService bookService;
 
-
     @GetMapping("/category/{category}")
-    public ResponseEntity<List<BookResponse>> getByCategory(String category) {
-        List<Book> books = bookService.findByCategory(category);
+    public ResponseEntity<List<BookResponse>> getByCategory(
+            @PathVariable String category,
+            @RequestParam String requestedBy) {
+        List<Book> books = bookService.findByCategory(category, requestedBy);
         return ResponseEntity.ok(toResponses(books));
     }
 
     @GetMapping("/author/{authorName}")
-    public ResponseEntity<List<BookResponse>> getByAuthor(String authorName) {
-        List<Book> books = bookService.findByAuthor(authorName);
+    public ResponseEntity<List<BookResponse>> getByAuthor(
+            @PathVariable String authorName,
+            @RequestParam String requestedBy) {
+        List<Book> books = bookService.findByAuthor(authorName, requestedBy);
         return ResponseEntity.ok(toResponses(books));
     }
 
-    @GetMapping
-    public ResponseEntity<Page<BookResponse>> getAll(Pageable pageable) {
-        return ResponseEntity.ok(bookService.findAll(pageable).map(BookResponse::from));
+    @GetMapping("/categories")
+    public ResponseEntity<List<String>> getAllCategories() {
+        return ResponseEntity.ok(bookService.getAllCategories());
     }
 
     @PostMapping("/sync")
